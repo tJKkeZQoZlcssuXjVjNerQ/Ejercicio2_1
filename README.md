@@ -7,7 +7,6 @@
 201810020087  Delbert Lira<br>
 201810020267  Katherine Andino<br>
 201820020078  Lissien Miranda<br>
-![image](https://user-images.githubusercontent.com/24599972/179279368-bcd73055-5544-4108-b44d-da5a14e930aa.png)
 
 
 # Elementos USADOS
