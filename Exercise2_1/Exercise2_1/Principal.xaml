@@ -1,1 +1,65 @@
-﻿
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:fftrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="Exercise2_1.Principal"
+             BackgroundImageSource="background.jpg">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ffimageloadingsvg:SvgImageSourceConverter x:Key="SvgImageSourceConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Image Source="uthapp.png" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="100"/>
+                <Label Text="Seleccione Continente" HorizontalOptions="CenterAndExpand" Padding="0,40,0,0"
+                   TextColor="OrangeRed" FontSize="19" FontAttributes="Bold"/>
+            </StackLayout>
+            <Picker x:Name="listaContinentes" Title="Seleccione un Continente" 
+                    TitleColor="#27B9F7"
+                    Margin="0,20,0,0" SelectedIndexChanged="listaContinentes_SelectedIndexChanged"  
+                    HorizontalOptions="Center" WidthRequest="350"
+                    HorizontalTextAlignment="Center">
+                <!--LISTA OBTENIDA SEGUN LO DEL JSON DE LA API DE restcountries-->
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Africa</x:String>
+                        <x:String>America</x:String>
+                        <x:String>Asia</x:String>
+                        <x:String>Europa</x:String>
+                        <x:String>Oceania</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Label x:Name="labelMostrarpais" Text="Seleccione Pais" TextColor="BlanchedAlmond" 
+                   HorizontalOptions="CenterAndExpand" FontSize="19" FontAttributes="Bold" IsVisible="false"/>
+            <ListView x:Name="listaPais" SeparatorVisibility="Default" 
+                      ItemSelected="listaPais_ItemSelected" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="lblnombre" 
+                                       Grid.Column="0" Grid.Row="0"
+                                       FontSize="19" HorizontalOptions="Center" 
+                                       VerticalOptions="CenterAndExpand" Text="{Binding name.common}"/>
+                                <!--IMAGEN EN FORMATO SVG-->
+                                <ffimageloadingsvg:SvgCachedImage  Source="{Binding flags.svg}" ErrorPlaceholder="Error" HeightRequest="40" Aspect="AspectFit" CacheDuration= "30" RetryCount= "10" RetryDelay= "450" DownsampleToViewSize = "true" Grid.Column="1" Grid.Row="0"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
