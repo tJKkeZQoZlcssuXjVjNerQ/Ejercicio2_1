@@ -1,1 +1,18 @@
-﻿
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="Exercise2_1.Mapita">
+    <ContentPage.Content>
+        <StackLayout>
+            <!--VALORES OCULTOS SOLO PARA SER LEIDOS DESDE EL CS DE ESE DISEño de mapa-->
+            <Label x:Name="txtLatitud" IsVisible="false" Text="{Binding latitud}"/>
+            <Label x:Name="txtLongitud" IsVisible="false"  Text="{Binding longitud}"/>
+            <Label x:Name="txtCapital" IsVisible="false" Text="{Binding CapitalPais}"/>
+            <Label x:Name="txtMoneda" IsVisible="false" Text="{Binding moneda}"/>
+            <Label x:Name="txtNombre" IsVisible="false" Text="{Binding nombrePais}"/>
+            <Label x:Name="txtidioma" IsVisible="false" Text="{Binding lenguaje}"/>
+            <maps:Map x:Name="Maps" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsShowingUser="True"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
