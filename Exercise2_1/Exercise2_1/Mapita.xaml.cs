@@ -64,6 +64,13 @@ namespace Exercise2_1
             }
         }
 
+        //MOVER AL CAMBIAR LA POSICION
+        private void Locatilazion_PositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
+        {
+            int value1 = 1; int value2 = 1;
+            Position movetomaps = new Position(Convert.ToDouble(txtLatitud.Text), Convert.ToDouble(txtLongitud.Text));
+            Maps.MoveToRegion(new MapSpan(movetomaps, value1, value2));
+        }
 
     }
 }
